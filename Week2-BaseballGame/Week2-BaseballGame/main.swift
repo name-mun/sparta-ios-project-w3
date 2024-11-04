@@ -1,8 +1,9 @@
 import Foundation
 
+
 func startGame() {
     print("레벨을 선택하세요 (1, 2, 4, 5, 6):")
-    
+  
     if let input = readLine(), let level = Int(input) {
         switch level {
         case 1:

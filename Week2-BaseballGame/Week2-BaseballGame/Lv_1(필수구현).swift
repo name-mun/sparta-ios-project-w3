@@ -5,5 +5,12 @@
 import Foundation
 
 func levelOne() {
+    // 정답을 저장한 set 생성
+    var correctAnswer = Set<Int>()
     
+    // correctAnswer의 크기가 3보다 작을 때까지 실행
+    while (correctAnswer.count < 3) {
+        // correctAnswer에 랜덤 숫자 추가
+        correctAnswer.insert(Int.random(in: 1 ... 9))
+    }
 }
