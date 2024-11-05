@@ -46,10 +46,6 @@ func levelTwo() {
     // 랜덤값을 저장할 set 생성
     var randomNumberSet = Set<Int>()
     
-    // 스트라이크와 볼을 저장할 변수 생성
-    var strikeCount = 0
-    var ballCount = 0
-    
     // randomNumberSet의 크기가 3이 될 때까지 실행
     while (randomNumberSet.count < 3) {
         // randomNumberSet에 랜덤 숫자 추가
@@ -60,19 +56,49 @@ func levelTwo() {
 
     print("< 게임을 시작합니다 >")
     
-    
     // 정답을 맞출 때까지 실행
-    while strikeCount != 3 {
+    while true {
         print("숫자를 입력하세요")
         
-        var input = readLine()
+        let input = readLine()
+        var inputArray = [Int]()
+        
+        // 스트라이크와 볼을 저장할 변수 생성
+        var strikeCount = 0
+        var ballCount = 0
         
         if inputErrorCheck(input) == false {
             print("올바르지 않은 입력값입니다\n")
             continue
         }
         
-
+        inputArray = Array(input!).map { Int(String($0))! }
         
+        // 스트라이크, 볼 계산
+        for i in 0...2 {
+            for j in 0...2 {
+                // 같은 자리 같은 숫자이면 스트라이크 저장
+                if i == j && inputArray[i] == randomNumberArray[j] {
+                    strikeCount += 1
+                // 다른 자리 같은 숫자이면 볼 저장
+                } else if inputArray[i] == randomNumberArray[j] {
+                    ballCount += 1
+                }
+            }
+        }
+        
+        if strikeCount == 3 {
+            print("정답입니다!")
+            break
+        } else if strikeCount > 0 && ballCount > 0 {
+            print("\(strikeCount)스트라이크 \(ballCount)볼\n")
+        } else if strikeCount > 0 {
+            print("\(strikeCount)스트라이크\n")
+        } else if ballCount > 0 {
+            print("\(ballCount)볼\n")
+        } else {
+            print("Out\n")
+        }
+            
     }
 }
