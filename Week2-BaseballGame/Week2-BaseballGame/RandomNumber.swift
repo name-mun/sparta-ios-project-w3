@@ -18,4 +18,38 @@ class RandomNumber {
         // 베열로 변환 후 반환
         return Array(randomNumber)
     }
+    
+    // 랜덤 숫자와 입력값을 비교하는 함수
+    func compareInput(_ input: [Int]) -> Result {
+        // 결과를 저장한 변수 생성
+        var strike = 0
+        var ball = 0
+
+        for i in randomNumber.indices {
+            for j in input.indices {
+                // 자리&숫자 같으면 스트라이크
+                if i == j && randomNumber[i] == input[j] { strike += 1 }
+                // 숫자만 같으면 볼
+                else if randomNumber[i] == input[j] { ball += 1 }
+            }
+        }
+        
+        let result: Result
+        
+        if strike > 0 && ball > 0 {
+            result = .strikeBall
+        } else if strike == 3 {
+            result = .success
+        } else if strike > 0 {
+            result = .strike
+        } else if ball > 0 {
+            result = .ball
+        } else {
+            result = .out
+        }
+        
+        result.printResult(strike: strike, ball: ball)
+        
+        return result
+    }
 }

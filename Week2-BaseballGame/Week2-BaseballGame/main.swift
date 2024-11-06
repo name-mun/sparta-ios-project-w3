@@ -19,7 +19,14 @@ class BaseballGame {
                 print("올바르지 않은 입력값입니다\n")
                 continue
             }
-
+            
+            // 입력값을 배열로 저장
+            let inputArray = input!.map { Int(String($0))! }
+            
+            // 정답과 입력값을 비교하고, 성공하면 함수 종료
+            if randomNumber.compareInput(inputArray) == .success {
+                break
+            }
         }
     }
 }
