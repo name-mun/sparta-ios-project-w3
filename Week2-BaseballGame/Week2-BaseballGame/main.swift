@@ -3,8 +3,6 @@ import Foundation
 class BaseballGame {
     // 게임 기록을 저장할 2차원 배열 생성
     var gameHistory = [[0],[0]]
-    // 랜덤 숫자 인스턴스 생성
-    let randomNumber = RandomNumber()
     // 에러 확인 인스턴스 생성
     let inputError = InputError()
     
@@ -25,6 +23,9 @@ class BaseballGame {
         // 몇 번째 게임인지 저장
         gameHistory[0].append(gameHistory[0].count)
         gameHistory[1].append(0)
+        
+        // 랜덤 숫자 인스턴스 생성
+        let randomNumber = RandomNumber()
         
         // 입력값과 결과가 같을 때까지 반복
         while true {
