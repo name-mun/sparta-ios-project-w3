@@ -1,6 +1,8 @@
 import Foundation
 
 class BaseballGame {
+    // 게임 기록을 저장할 2차원 배열 생성
+    var gameHistory = [[0],[0]]
     // 랜덤 숫자 인스턴스 생성
     let randomNumber = RandomNumber()
     // 에러 확인 인스턴스 생성
@@ -13,12 +15,17 @@ class BaseballGame {
         
         switch input {
         case 1: gameStart()
+        case 2: printGameHistory()
         default: selectCategory()
         }
     }
     
     func gameStart() {
-        print("< 게임을 시작합니다 >")
+        print("\n< 게임을 시작합니다 >")
+        // 몇 번째 게임인지 저장
+        gameHistory[0].append(gameHistory[0].count)
+        gameHistory[1].append(0)
+        
         // 입력값과 결과가 같을 때까지 반복
         while true {
             // 입력값을 받고 변수에 저장
@@ -30,6 +37,8 @@ class BaseballGame {
                 print("올바르지 않은 입력값입니다\n")
                 continue
             }
+            // 시도 횟수 추가
+            gameHistory[1][gameHistory[1].count - 1] += 1
             
             // 입력값을 배열로 저장
             let inputArray = input!.map { Int(String($0))! }
@@ -39,6 +48,17 @@ class BaseballGame {
                 break
             }
         }
+        
+        selectCategory()
+    }
+    
+    func printGameHistory() {
+        print("\n< 게임 기록 보기 >")
+        
+        for i in 1...gameHistory[0].count - 1 {
+            print("\(gameHistory[0][i])번째 게임 : 시도 횟수 - \(gameHistory[1][i])\n")
+        }
+
         selectCategory()
     }
  }
