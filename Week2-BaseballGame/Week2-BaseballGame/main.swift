@@ -14,6 +14,7 @@ class BaseballGame {
         switch input {
         case 1: gameStart()
         case 2: printGameHistory()
+        case 3: gameOver()
         default: selectCategory()
         }
     }
@@ -61,6 +62,11 @@ class BaseballGame {
         }
 
         selectCategory()
+    }
+    
+    func gameOver() {
+        print("\n< 숫자 야구 게임을 종료합니다 >")
+        return
     }
  }
 
