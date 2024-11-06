@@ -8,6 +8,13 @@ class BaseballGame {
     
     func selectCategory() {
         print("환영합니다! 원하시는 번호를 입력해주세요\n 1. 게임 시작하기 2. 게임 기록 보기 3. 종료하기")
+        
+        let input = Int(readLine()!)
+        
+        switch input {
+        case 1: gameStart()
+        default: selectCategory()
+        }
     }
     
     func gameStart() {
