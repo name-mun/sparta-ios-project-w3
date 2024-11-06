@@ -13,7 +13,6 @@ class RandomNumber {
         // 서로 다른 숫자가 3개를 생성할 때까지 반복
         while (randomNumber.count < 3) {
             let thisRandomNumber = Int.random(in: 0...9)
-            print(thisRandomNumber)
             
             // 배열의 첫 요소이고 랜덤 숫자가 0인지 확인
             if thisRandomNumber == 0 && randomNumber.count == 0 {
