@@ -6,6 +6,10 @@ class BaseballGame {
     // 에러 확인 인스턴스 생성
     let inputError = InputError()
     
+    func selectCategory() {
+        print("환영합니다! 원하시는 번호를 입력해주세요\n 1. 게임 시작하기 2. 게임 기록 보기 3. 종료하기")
+    }
+    
     func gameStart() {
         print("< 게임을 시작합니다 >")
         // 입력값과 결과가 같을 때까지 반복
@@ -29,7 +33,7 @@ class BaseballGame {
             }
         }
     }
-}
+ }
 
 let baseballGame = BaseballGame()
-baseballGame.gameStart()
+baseballGame.selectCategory()
