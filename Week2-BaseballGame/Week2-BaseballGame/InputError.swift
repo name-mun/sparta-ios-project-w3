@@ -5,10 +5,11 @@ class InputError {
         guard input!.count == 3, let inputInt = Int(input!), Set(input!).count == 3 else {
             return true
         }
-        // 0이 있는 경우
-        if input!.contains("0") {
+        // 첫 번째 자리에 0이 있는 경우
+        if Array(input!)[0] == "0" {
             return true
         }
+        
         return false
     }
 }
