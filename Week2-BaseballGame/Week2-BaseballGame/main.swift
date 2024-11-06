@@ -39,6 +39,7 @@ class BaseballGame {
                 break
             }
         }
+        selectCategory()
     }
  }
 

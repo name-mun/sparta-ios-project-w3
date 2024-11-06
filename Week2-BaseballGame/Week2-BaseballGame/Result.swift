@@ -9,7 +9,7 @@ enum Result {
     func printResult(strike: Int, ball: Int) {
         switch self {
         case .success :
-            print("정답입니다!")
+            print("정답입니다!\n")
         case .strikeBall:
             print("\(strike)스트라이크 \(ball)볼\n")
         case .strike:
