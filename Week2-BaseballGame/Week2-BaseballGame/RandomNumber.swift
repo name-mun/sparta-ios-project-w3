@@ -8,15 +8,26 @@ class RandomNumber {
     // 서로 다른 임의수 3개를 만드는 함수
     func makeRandomNumber() -> [Int] {
         // 랜덤 숫자를 저장할 Set 생성
-        var randomNumber = Set<Int>()
-        
+        var randomNumber = [Int]()
+
         // 서로 다른 숫자가 3개를 생성할 때까지 반복
         while (randomNumber.count < 3) {
-            randomNumber.insert(Int.random(in: 1 ... 9))
+            let thisRandomNumber = Int.random(in: 0...9)
+            print(thisRandomNumber)
+            
+            // 배열의 첫 요소이고 랜덤 숫자가 0인지 확인
+            if thisRandomNumber == 0 && randomNumber.count == 0 {
+                continue
+            }
+            
+            // 중복값이 없으면 배열에 랜덤 숫자 추가
+            if !randomNumber.contains(thisRandomNumber) {
+                randomNumber.append(thisRandomNumber)
+            }
         }
         
         // 베열로 변환 후 반환
-        return Array(randomNumber)
+        return randomNumber
     }
     
     // 랜덤 숫자와 입력값을 비교하는 함수
