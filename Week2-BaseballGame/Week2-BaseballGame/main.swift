@@ -7,7 +7,7 @@ class BaseballGame {
     let inputError = InputError()
     
     func selectCategory() {
-        print("환영합니다! 원하시는 번호를 입력해주세요\n 1. 게임 시작하기 2. 게임 기록 보기 3. 종료하기")
+        print("\n환영합니다! 원하시는 번호를 입력해주세요\n 1. 게임 시작하기 2. 게임 기록 보기 3. 종료하기")
         
         let input = Int(readLine()!)
         
@@ -16,7 +16,7 @@ class BaseballGame {
         case 2: printGameHistory()
         case 3: gameOver()
         default:
-            print("\n올바른 숫자를 입력해주세요!\n")
+            print("\n올바른 숫자를 입력해주세요!")
             selectCategory()
         }
     }
@@ -59,8 +59,12 @@ class BaseballGame {
     func printGameHistory() {
         print("\n< 게임 기록 보기 >")
         
-        for i in 1...gameHistory[0].count - 1 {
-            print("\(gameHistory[0][i])번째 게임 : 시도 횟수 - \(gameHistory[1][i])\n")
+        if gameHistory[0].count > 1 {
+            for i in 1...gameHistory[0].count - 1 {
+                print("\(gameHistory[0][i])번째 게임 : 시도 횟수 - \(gameHistory[1][i])")
+            }
+        } else {
+            print("저장된 기록이 없습니다\n2")
         }
 
         selectCategory()
