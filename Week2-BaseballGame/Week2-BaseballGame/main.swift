@@ -1,8 +1,8 @@
 import Foundation
 
 class BaseballGame {
-    // 게임 기록을 저장할 2차원 배열 생성
-    var gameHistory = [[0],[0]]
+    // 게임 기록을 저장할 배열 생성
+    var gameHistory = [Int]()
     // 에러 확인 인스턴스 생성
     let inputError = InputError()
     
@@ -23,9 +23,8 @@ class BaseballGame {
     
     func gameStart() {
         print("\n< 게임을 시작합니다 >")
-        // 몇 번째 게임인지 저장
-        gameHistory[0].append(gameHistory[0].count)
-        gameHistory[1].append(0)
+        // 시도 횟수를 0으로 설정
+        gameHistory.append(0)
         
         // 랜덤 숫자 인스턴스 생성
         let randomNumber = RandomNumber()
@@ -42,7 +41,7 @@ class BaseballGame {
                 continue
             }
             // 시도 횟수 추가
-            gameHistory[1][gameHistory[1].count - 1] += 1
+            gameHistory[gameHistory.count - 1] += 1
             
             // 입력값을 배열로 저장
             let inputArray = input!.map { Int(String($0))! }
@@ -59,9 +58,9 @@ class BaseballGame {
     func printGameHistory() {
         print("\n< 게임 기록 보기 >")
         
-        if gameHistory[0].count > 1 {
-            for i in 1...gameHistory[0].count - 1 {
-                print("\(gameHistory[0][i])번째 게임 : 시도 횟수 - \(gameHistory[1][i])")
+        if gameHistory.count > 0 {
+            for i in gameHistory.indices {
+                print("\(i+1)번째 게임 : 시도 횟수 - \(gameHistory[i])")
             }
         } else {
             print("저장된 기록이 없습니다\n2")
