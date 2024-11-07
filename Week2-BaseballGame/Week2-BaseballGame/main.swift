@@ -15,7 +15,9 @@ class BaseballGame {
         case 1: gameStart()
         case 2: printGameHistory()
         case 3: gameOver()
-        default: selectCategory()
+        default:
+            print("\n올바른 숫자를 입력해주세요!\n")
+            selectCategory()
         }
     }
     
@@ -35,7 +37,7 @@ class BaseballGame {
             let input = readLine()
             
             // 입력값이 올바른지 확인
-            if inputError.checkInputError(input) == true {
+            if inputError.checkInputErrorGame(input) == true {
                 print("올바르지 않은 입력값입니다\n")
                 continue
             }
